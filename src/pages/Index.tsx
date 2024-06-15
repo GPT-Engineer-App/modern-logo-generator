@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { FaMagic } from "react-icons/fa";
 
 const Index: React.FC = () => {
@@ -12,9 +13,11 @@ const Index: React.FC = () => {
         Create clean, modern graphics in multiple styles with ease.
       </Text>
       <Flex justify="center">
-        <Button colorScheme="teal" size="lg" rightIcon={<FaMagic />}>
-          Generate Your Logo
-        </Button>
+        <Link to="/generate">
+          <Button colorScheme="teal" size="lg" rightIcon={<FaMagic />}>
+            Generate Your Logo
+          </Button>
+        </Link>
       </Flex>
     </Box>
   );
