@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { FaMagic } from "react-icons/fa";
 
 const Index: React.FC = () => {
