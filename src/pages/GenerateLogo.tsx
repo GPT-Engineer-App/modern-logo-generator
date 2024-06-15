@@ -1,14 +1,32 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, Heading, Input, Select, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input, Select, Text, Image } from "@chakra-ui/react";
 import { FaMagic } from "react-icons/fa";
 
 const GenerateLogo: React.FC = () => {
   const [companyName, setCompanyName] = useState("");
   const [style, setStyle] = useState("modern");
 
-  const handleGenerateLogo = () => {
-    // Placeholder for logo generation logic
-    console.log(`Generating logo for ${companyName} in ${style} style`);
+  const [logoUrl, setLogoUrl] = useState("");
+
+  const handleGenerateLogo = async () => {
+    try {
+      const response = await fetch("https://api.logo-generator.com/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ companyName, style }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to generate logo");
+      }
+
+      const data = await response.json();
+      setLogoUrl(data.logoUrl);
+    } catch (error) {
+      console.error("Error generating logo:", error);
+    }
   };
 
   return (
@@ -33,9 +51,14 @@ const GenerateLogo: React.FC = () => {
           Generate Logo
         </Button>
       </Flex>
-      <Text fontSize="xl">
-        Your generated logo will appear here.
-      </Text>
+      {logoUrl && (
+        <Box mt={6}>
+          <Text fontSize="xl" mb={4}>
+            Your generated logo:
+          </Text>
+          <Image src={logoUrl} alt="Generated Logo" />
+        </Box>
+      )}
     </Box>
   );
 };
