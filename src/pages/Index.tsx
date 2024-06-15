@@ -1,15 +1,23 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import React from "react";
+import { Box, Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { FaMagic } from "react-icons/fa";
 
-const Index = () => {
-  // TODO: Create the website here!
+const Index: React.FC = () => {
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Box textAlign="center" py={10} px={6}>
+      <Heading as="h1" size="2xl" mb={6}>
+        Welcome to the Logo Generator
+      </Heading>
+      <Text fontSize="xl" mb={6}>
+        Create clean, modern graphics in multiple styles with ease.
+      </Text>
+      <Flex justify="center">
+        <Button colorScheme="teal" size="lg" rightIcon={<FaMagic />}>
+          Generate Your Logo
+        </Button>
+      </Flex>
+    </Box>
+  );
 };
 
 export default Index;
